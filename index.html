@@ -1,286 +1,108 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ricardo Jaraba Gallego | Portafolio</title>
-    <meta name="description"
-        content="Portafolio de Ricardo Jaraba Gallego, estudiante de Ingeniería Informática. Programación en la nube, full stack y bases de datos.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono&display=swap"
-        rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        :root {
-            --ink: #0e1a2b;
-            --ink-soft: #1b2b44;
-            --paper: #f5f6f8;
-            --line: #d8dde5;
-            --accent: #ff9d1c;
-            --accent-dark: #a85d00;
-            --bs-body-font-family: "Source Sans 3", system-ui, sans-serif;
-            --bs-body-bg: var(--paper);
-            --bs-body-color: #1d2735;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ricardo Jaraba Gallego | Portafolio</title>
+  <meta name="description" content="Portafolio de Ricardo Jaraba Gallego, estudiante de Ingeniería Informática. Programación en la nube, full stack y bases de datos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Source+Sans+3:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0e1a2b;
+      --ink-soft: #1b2b44;
+      --paper: #f5f6f8;
+      --line: #d8dde5;
+      --accent: #ff9d1c;
+      --accent-dark: #a85d00;
+      --bs-body-font-family: "Source Sans 3", system-ui, sans-serif;
+      --bs-body-bg: var(--paper);
+      --bs-body-color: #1d2735;
+    }
+    html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    h1, h2, h3, .navbar-brand { font-family: "Bricolage Grotesque", sans-serif; letter-spacing: -0.01em; }
+    a:focus-visible, .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 70px;
-        }
+    .navbar { background: var(--ink); }
+    .navbar .nav-link { color: #c9d3e2; }
+    .navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff; }
+    .navbar-brand { color: #fff !important; font-weight: 800; }
 
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-        }
+    .hero { background: var(--ink); color: #e8eef7; padding: 4.5rem 0; }
+    .hero h1 { font-weight: 800; font-size: clamp(2.2rem, 6vw, 4rem); line-height: 1.05; color: #fff; }
+    .hero .lead { color: #b8c4d6; max-width: 34rem; }
+    .btn-accent { background: var(--accent); color: var(--ink); font-weight: 600; border: 0; }
+    .btn-accent:hover { background: #ffb04a; color: var(--ink); }
+    .btn-outline-light-soft { border: 1px solid #5b6f8f; color: #e8eef7; }
+    .btn-outline-light-soft:hover { background: var(--ink-soft); color: #fff; }
 
-        h1,
-        h2,
-        h3,
-        .navbar-brand {
-            font-family: "Bricolage Grotesque", sans-serif;
-            letter-spacing: -0.01em;
-        }
+    .code-card { background: #0a1322; border: 1px solid #2a3b57; border-radius: 10px; padding: 1.25rem 1.4rem;
+      font-family: "JetBrains Mono", monospace; font-size: .9rem; color: #d6e0ef; overflow-x: auto; }
+    .code-card .k { color: #ff9d1c; } .code-card .s { color: #8fd7b0; } .code-card .c { color: #8396b3; }
+    .code-card pre { margin: 0; white-space: pre; font: inherit; color: inherit; }
 
-        a:focus-visible,
-        .btn:focus-visible {
-            outline: 3px solid var(--accent);
-            outline-offset: 2px;
-        }
+    section.block { padding: 4rem 0; }
+    section.block + section.block { border-top: 1px solid var(--line); }
+    h2.title { font-weight: 800; font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: 1.8rem; }
 
-        .navbar {
-            background: var(--ink);
-        }
+    .timeline { border-left: 3px solid var(--accent); padding-left: 1.4rem; margin: 0; list-style: none; }
+    .timeline li { margin-bottom: 1.6rem; position: relative; }
+    .timeline li::before { content: ""; position: absolute; left: calc(-1.4rem - 8px); top: .45rem; width: 13px; height: 13px;
+      border-radius: 50%; background: var(--paper); border: 3px solid var(--accent); }
+    .timeline h3 { font-size: 1.2rem; margin-bottom: .15rem; }
 
-        .navbar .nav-link {
-            color: #c9d3e2;
-        }
+    .project { background: #fff; border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 6px; padding: 1.6rem; }
+    .tag { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: .8rem; padding: .2rem .6rem;
+      border: 1px solid var(--line); background: #fff; border-radius: 4px; margin: 0 .35rem .45rem 0; }
+    .lang { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 1.2rem; height: 100%; }
+    .lang h3 { font-size: 1.25rem; }
+    .interest { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    .interest h3 { font-size: 1.15rem; margin-bottom: .2rem; }
+    .interest:last-child { border-bottom: 0; }
 
-        .navbar .nav-link:hover,
-        .navbar .nav-link:focus {
-            color: #fff;
-        }
-
-        .navbar-brand {
-            color: #fff !important;
-            font-weight: 800;
-        }
-
-        .hero {
-            background: var(--ink);
-            color: #e8eef7;
-            padding: 4.5rem 0;
-        }
-
-        .hero h1 {
-            font-weight: 800;
-            font-size: clamp(2.2rem, 6vw, 4rem);
-            line-height: 1.05;
-            color: #fff;
-        }
-
-        .hero .lead {
-            color: #b8c4d6;
-            max-width: 34rem;
-        }
-
-        .btn-accent {
-            background: var(--accent);
-            color: var(--ink);
-            font-weight: 600;
-            border: 0;
-        }
-
-        .btn-accent:hover {
-            background: #ffb04a;
-            color: var(--ink);
-        }
-
-        .btn-outline-light-soft {
-            border: 1px solid #5b6f8f;
-            color: #e8eef7;
-        }
-
-        .btn-outline-light-soft:hover {
-            background: var(--ink-soft);
-            color: #fff;
-        }
-
-        .code-card {
-            background: #0a1322;
-            border: 1px solid #2a3b57;
-            border-radius: 10px;
-            padding: 1.25rem 1.4rem;
-            font-family: "JetBrains Mono", monospace;
-            font-size: .9rem;
-            color: #d6e0ef;
-            overflow-x: auto;
-        }
-
-        .code-card .k {
-            color: #ff9d1c;
-        }
-
-        .code-card .s {
-            color: #8fd7b0;
-        }
-
-        .code-card .c {
-            color: #8396b3;
-        }
-
-        .code-card pre {
-            margin: 0;
-            white-space: pre;
-            font: inherit;
-            color: inherit;
-        }
-
-        section.block {
-            padding: 4rem 0;
-        }
-
-        section.block+section.block {
-            border-top: 1px solid var(--line);
-        }
-
-        h2.title {
-            font-weight: 800;
-            font-size: clamp(1.7rem, 4vw, 2.3rem);
-            margin-bottom: 1.8rem;
-        }
-
-        .timeline {
-            border-left: 3px solid var(--accent);
-            padding-left: 1.4rem;
-            margin: 0;
-            list-style: none;
-        }
-
-        .timeline li {
-            margin-bottom: 1.6rem;
-            position: relative;
-        }
-
-        .timeline li::before {
-            content: "";
-            position: absolute;
-            left: calc(-1.4rem - 8px);
-            top: .45rem;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: var(--paper);
-            border: 3px solid var(--accent);
-        }
-
-        .timeline h3 {
-            font-size: 1.2rem;
-            margin-bottom: .15rem;
-        }
-
-        .project {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-left: 5px solid var(--accent);
-            border-radius: 6px;
-            padding: 1.6rem;
-        }
-
-        .tag {
-            display: inline-block;
-            font-family: "JetBrains Mono", monospace;
-            font-size: .8rem;
-            padding: .2rem .6rem;
-            border: 1px solid var(--line);
-            background: #fff;
-            border-radius: 4px;
-            margin: 0 .35rem .45rem 0;
-        }
-
-        .lang {
-            background: #fff;
-            border: 1px solid var(--line);
-            border-radius: 6px;
-            padding: 1.2rem;
-            height: 100%;
-        }
-
-        .lang h3 {
-            font-size: 1.25rem;
-        }
-
-        .interest {
-            padding: 1rem 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        .interest h3 {
-            font-size: 1.15rem;
-            margin-bottom: .2rem;
-        }
-
-        .interest:last-child {
-            border-bottom: 0;
-        }
-
-        footer {
-            background: var(--ink);
-            color: #b8c4d6;
-            padding: 3rem 0;
-        }
-
-        footer a {
-            color: var(--accent);
-        }
-
-        footer h2 {
-            color: #fff;
-            font-weight: 800;
-        }
-    </style>
+    footer { background: var(--ink); color: #b8c4d6; padding: 3rem 0; }
+    footer a { color: var(--accent); }
+    footer h2 { color: #fff; font-weight: 800; }
+  </style>
 </head>
-
 <body>
 
-    <nav class="navbar navbar-expand-md navbar-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#inicio">Ricardo Jaraba</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
-                aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="menu">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#estudios">Estudios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#lenguajes">Lenguajes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#intereses">Intereses</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#inicio">Ricardo Jaraba</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Abrir menú">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#sobre-mi">Sobre mí</a></li>
+          <li class="nav-item"><a class="nav-link" href="#estudios">Estudios</a></li>
+          <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+          <li class="nav-item"><a class="nav-link" href="#lenguajes">Lenguajes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#intereses">Intereses</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <header class="hero" id="inicio">
-        <div class="container">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-6">
-                    <h1>Programo, modelo datos y estoy aprendiendo la nube.</h1>
-                    <p class="lead mt-3">Soy Ricardo Jaraba Gallego, estudiante de Ingeniería Informática. Me interesa
-                        el desarrollo full stack, las bases de datos y AWS.</p>
-                    <div class="d-flex flex-wrap gap-2 mt-4">
-                        <a href="#proyectos" class="btn btn-accent btn-lg">Ver mi proyecto</a>
-                        <a href="#contacto" class="btn btn-outline-light-soft btn-lg">Contactarme</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="code-card" aria-label="Resumen de perfil escrito como código">
-                        <pre><span class="c">// perfil.js</span>
+  <header class="hero" id="inicio">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-6">
+          <h1>Programo, modelo datos y estoy aprendiendo la nube.</h1>
+          <p class="lead mt-3">Soy Ricardo Jaraba Gallego, estudiante de Ingeniería Informática. Me interesa el desarrollo full stack, las bases de datos y AWS.</p>
+          <div class="d-flex flex-wrap gap-2 mt-4">
+            <a href="#proyectos" class="btn btn-accent btn-lg">Ver mi proyecto</a>
+            <a href="#contacto" class="btn btn-outline-light-soft btn-lg">Contactarme</a>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="code-card" aria-label="Resumen de perfil escrito como código">
+<pre><span class="c">// perfil.js</span>
 <span class="k">const</span> ricardo = {
   estudia:   <span class="s">"Ingeniería Informática"</span>,
   lenguajes: [<span class="s">"JavaScript"</span>, <span class="s">"Python"</span>, <span class="s">"SQL"</span>],
@@ -288,149 +110,122 @@
   proyecto:  <span class="s">"RDSLP"</span>,
   ciudad:    <span class="s">"Medellín"</span>
 };</pre>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </header>
 
-    <main>
-        <section class="block" id="sobre-mi">
-            <div class="container">
-                <h2 class="title">Información personal</h2>
-                <div class="row g-4">
-                    <div class="col-md-7">
-                        <p class="fs-5">Tengo 18 años y estudio Ingeniería Informática. Desde el colegio me formé como
-                            técnico en sistemas y empecé a trabajar con programación, bases de datos y servicios de AWS.
-                        </p>
-                        <p>Busco seguir aprendiendo y construir proyectos reales que combinen desarrollo web, datos y
-                            computación en la nube.</p>
-                    </div>
-                    <div class="col-md-5">
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-2"><strong>Nombre:</strong> Ricardo Jaraba Gallego</li>
-                            <li class="mb-2"><strong>Edad:</strong> 18 años</li>
-                            <li class="mb-2"><strong>Correo:</strong> <a
-                                    href="mailto:ricardojg2008@gmail.com">ricardojg2008@gmail.com</a></li>
-                            <li><strong>Teléfono:</strong> <a href="tel:+573012450057">301 245 0057</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="block" id="estudios">
-            <div class="container">
-                <h2 class="title">Estudios realizados</h2>
-                <ul class="timeline">
-                    <li>
-                        <h3>Ingeniería Informática</h3>
-                        <p class="mb-0 text-secondary">Corporación Universitaria Lasallista · En curso</p>
-                    </li>
-                    <li>
-                        <h3>Cursos de AWS</h3>
-                        <p class="mb-0 text-secondary">Formación en servicios de computación en la nube de Amazon Web
-                            Services.</p>
-                    </li>
-                    <li>
-                        <h3>Media técnica: Técnico en Sistemas, con énfasis en TIC</h3>
-                        <p class="mb-0 text-secondary">Institución Educativa INEM José Félix de Restrepo</p>
-                    </li>
-                    <li>
-                        <h3>Bachillerato académico</h3>
-                        <p class="mb-0 text-secondary">Institución Educativa INEM José Félix de Restrepo</p>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="block" id="proyectos">
-            <div class="container">
-                <h2 class="title">Proyectos</h2>
-                <article class="project">
-                    <h3>RDSLP</h3>
-                    <p class="mb-2">Una red social para programadores y para quienes quieren aprender lenguajes de
-                        programación. Los usuarios pueden compartir y encontrar contenido organizado por lenguaje.</p>
-                    <div class="mt-3">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">SQL</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Bootstrap</span>
-                    </div>
-                    <a href="https://github.com/Richard2437" class="btn btn-dark btn-sm mt-2">Ver código en GitHub</a>
-                </article>
-            </div>
-        </section>
-
-        <section class="block" id="lenguajes">
-            <div class="container">
-                <h2 class="title">Lenguajes de programación</h2>
-                <div class="row g-3">
-                    <div class="col-12 col-md-4">
-                        <div class="lang">
-                            <h3>JavaScript</h3>
-                            <p class="mb-0">Lógica del lado del cliente y desarrollo web.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="lang">
-                            <h3>Python</h3>
-                            <p class="mb-0">Scripts, automatización y lógica de programación.</p>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-4">
-                        <div class="lang">
-                            <h3>SQL</h3>
-                            <p class="mb-0">Bases de datos relacionales: diseño, consultas y modelado.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="block" id="intereses">
-            <div class="container">
-                <h2 class="title">Áreas de interés profesional</h2>
-                <div class="row">
-                    <div class="col-lg-8">
-                        <div class="interest">
-                            <h3>Programación en la nube</h3>
-                            <p class="mb-0">Diseñar y desplegar aplicaciones sobre AWS.</p>
-                        </div>
-                        <div class="interest">
-                            <h3>Desarrollo full stack</h3>
-                            <p class="mb-0">Construir tanto la interfaz como el servidor de una aplicación.</p>
-                        </div>
-                        <div class="interest">
-                            <h3>Bases de datos</h3>
-                            <p class="mb-0">Modelado, consultas y administración de datos.</p>
-                        </div>
-                        <div class="interest">
-                            <h3>Desarrollo de APIs</h3>
-                            <p class="mb-0">Servicios que conectan aplicaciones y datos.</p>
-                        </div>
-                        <div class="interest">
-                            <h3>Automatización y DevOps</h3>
-                            <p class="mb-0">Despliegues y procesos que se repiten sin esfuerzo manual.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer id="contacto">
-        <div class="container">
-            <h2>Contacto</h2>
-            <p class="mb-1">¿Quieres hablar de un proyecto o una oportunidad?</p>
-            <p class="mb-0"><a href="mailto:ricardojg2008@gmail.com">ricardojg2008@gmail.com</a> · <a
-                    href="tel:+573012450057">301 245 0057</a></p>
-            <p class="mt-4 mb-0 small">© 2026 Ricardo Jaraba Gallego</p>
+  <main>
+    <section class="block" id="sobre-mi">
+      <div class="container">
+        <h2 class="title">Información personal</h2>
+        <div class="row g-4">
+          <div class="col-md-7">
+            <p class="fs-5">Tengo 18 años y estudio Ingeniería Informática. Desde el colegio me formé como técnico en sistemas y empecé a trabajar con programación, bases de datos y servicios de AWS.</p>
+            <p>Busco seguir aprendiendo y construir proyectos reales que combinen desarrollo web, datos y computación en la nube.</p>
+          </div>
+          <div class="col-md-5">
+            <ul class="list-unstyled mb-0">
+              <li class="mb-2"><strong>Nombre:</strong> Ricardo Jaraba Gallego</li>
+              <li class="mb-2"><strong>Edad:</strong> 18 años</li>
+              <li class="mb-2"><strong>Correo:</strong> <a href="mailto:ricardojg2008@gmail.com">ricardojg2008@gmail.com</a></li>
+              <li><strong>Teléfono:</strong> <a href="tel:+573012450057">301 245 0057</a></li>
+            </ul>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <section class="block" id="estudios">
+      <div class="container">
+        <h2 class="title">Estudios realizados</h2>
+        <ul class="timeline">
+          <li>
+            <h3>Ingeniería Informática</h3>
+            <p class="mb-0 text-secondary">Corporación Universitaria Lasallista · En curso</p>
+          </li>
+          <li>
+            <h3>Cursos de AWS</h3>
+            <p class="mb-0 text-secondary">Formación en servicios de computación en la nube de Amazon Web Services.</p>
+          </li>
+          <li>
+            <h3>Curso de robótica</h3>
+            <p class="mb-0 text-secondary">Formación complementaria en robótica.</p>
+          </li>
+          <li>
+            <h3>Media técnica: Técnico en Sistemas, con énfasis en TIC</h3>
+            <p class="mb-0 text-secondary">Institución Educativa INEM José Félix de Restrepo</p>
+          </li>
+          <li>
+            <h3>Bachillerato académico</h3>
+            <p class="mb-0 text-secondary">Institución Educativa INEM José Félix de Restrepo</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="block" id="proyectos">
+      <div class="container">
+        <h2 class="title">Proyectos</h2>
+        <article class="project">
+          <h3>RDSLP</h3>
+          <p class="mb-2">Una red social para programadores y para quienes quieren aprender lenguajes de programación. Los usuarios pueden compartir y encontrar contenido organizado por lenguaje.</p>
+          <div class="mt-3">
+            <span class="tag">JavaScript</span>
+            <span class="tag">SQL</span>
+            <span class="tag">CSS</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Bootstrap</span>
+          </div>
+          <!-- Cuando tengas el repositorio, quita los comentarios y pon tu enlace:
+          <a href="https://github.com/TU_USUARIO/rdslp" class="btn btn-dark btn-sm mt-2">Ver código en GitHub</a> -->
+        </article>
+      </div>
+    </section>
+
+    <section class="block" id="lenguajes">
+      <div class="container">
+        <h2 class="title">Lenguajes de programación</h2>
+        <div class="row g-3">
+          <div class="col-12 col-md-4">
+            <div class="lang"><h3>JavaScript</h3><p class="mb-0">Lógica del lado del cliente y desarrollo web.</p></div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="lang"><h3>Python</h3><p class="mb-0">Scripts, automatización y lógica de programación.</p></div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="lang"><h3>SQL</h3><p class="mb-0">Bases de datos relacionales: diseño, consultas y modelado.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="intereses">
+      <div class="container">
+        <h2 class="title">Áreas de interés profesional</h2>
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="interest"><h3>Programación en la nube</h3><p class="mb-0">Diseñar y desplegar aplicaciones sobre AWS.</p></div>
+            <div class="interest"><h3>Desarrollo full stack</h3><p class="mb-0">Construir tanto la interfaz como el servidor de una aplicación.</p></div>
+            <div class="interest"><h3>Bases de datos</h3><p class="mb-0">Modelado, consultas y administración de datos.</p></div>
+            <div class="interest"><h3>Desarrollo de APIs</h3><p class="mb-0">Servicios que conectan aplicaciones y datos.</p></div>
+            <div class="interest"><h3>Automatización y DevOps</h3><p class="mb-0">Despliegues y procesos que se repiten sin esfuerzo manual.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contacto">
+    <div class="container">
+      <h2>Contacto</h2>
+      <p class="mb-1">¿Quieres hablar de un proyecto o una oportunidad?</p>
+      <p class="mb-0"><a href="mailto:ricardojg2008@gmail.com">ricardojg2008@gmail.com</a> · <a href="tel:+573012450057">301 245 0057</a></p>
+      <p class="mt-4 mb-0 small">© 2026 Ricardo Jaraba Gallego</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
